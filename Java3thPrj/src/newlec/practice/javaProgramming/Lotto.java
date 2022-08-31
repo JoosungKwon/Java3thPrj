@@ -21,6 +21,7 @@ public class Lotto {
 		System.out.print("┌────────────────────────────────────┐\n");
 		System.out.print("│              로또 복권               │\n");
 		System.out.print("└────────────────────────────────────┘\n");
+		
 		// 번호를 입력 받는 창 
 		for(int i =0; i<6;i++) {
 			System.out.print("번호를 입력하세요: ");
@@ -41,6 +42,7 @@ public class Lotto {
 			}
 			System.out.println();
 		}
+		
 		// 로또 번호 추출기
 		while(result.size()<6) {
 			int num = rand.nextInt(45);
@@ -49,6 +51,7 @@ public class Lotto {
 			}
 			result.add(++num);
 		}
+		
 		// 보너스 숫자 추출
 		int bonusNum = rand.nextInt(45)+1;
 		while(result.contains(bonusNum)) {
@@ -93,6 +96,7 @@ public class Lotto {
 		case 6: System.out.printf("1등을 축하드립니다!!!! 당첨금은: %s 원 입니다.%n",formatter.format(jackpot*0.75)); break; // 다 맞았다면 1등 총 당첨금에 75%가 제공된다. 
 		}
 		System.out.println();
+		
 		// 종료 화면
 		System.out.print("┌────────────────────────────────────┐\n");
 		System.out.print("│             구매 감사드립니다          │\n");
@@ -116,7 +120,6 @@ public class Lotto {
 			System.out.printf(" %d",n);
 		}
 		System.out.println(" 입니다");
-		
 		
 	}
 
