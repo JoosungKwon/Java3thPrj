@@ -1,4 +1,4 @@
-package com.newlecture.ch3.fileio;
+package com.newlecture.ch3.fo;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

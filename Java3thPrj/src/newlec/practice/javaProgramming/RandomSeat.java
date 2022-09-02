@@ -82,7 +82,7 @@ public class RandomSeat {
 		//seatTable[4][3] = temp.get(0);
 		
 		
-		Seat.main(seatTable);
+		SeatPrint.print(seatTable);
 		//PrintSeatTable.print(seatTable);
 		
 		// 새롭게 선정된 조로 내용 초기화

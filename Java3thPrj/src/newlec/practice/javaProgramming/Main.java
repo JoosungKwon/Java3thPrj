@@ -1,4 +1,4 @@
-package com.newlecture.ch3.fo;
+package newlec.practice.javaProgramming;
 
 import java.util.Scanner;
 

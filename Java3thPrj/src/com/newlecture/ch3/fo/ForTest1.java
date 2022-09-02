@@ -61,7 +61,7 @@ public class ForTest1 {
 		
 		for(int y=1; y<=10; y++) {
 			for(int x=1; x<=10; x++) {
-				if(x >= 11-y  && x<=y)
+				if(x >= 12-y  && x<=y)
 					System.out.printf("%c",'●');
 				else
 				System.out.printf("%c",'┼');
@@ -69,29 +69,31 @@ public class ForTest1 {
 			System.out.println();
 		}
 		
+		int size = 12;
 		
-		for(int y=0; y<10; y++) {
+		for(int y=1; y<=size; y++) {
 			
 			// 모서리
-			if(y== 0 )
+			if(y== 1)
 				System.out.printf("%c",'┌'); // 왼쪽 위 모서리
-			else if(y>= 12 )
+			else if(y== size)
 				System.out.printf("%c",'└');// 왼쪽 아래 모서리
 			else 
 				System.out.printf("%c",'├'); // 왼쪽 옆
 			
-			for(int x=1; x<=10; x++) {
-				if(y<= 1 ) // 맨위 부분
+			for(int x=1; x<=size-2; x++) {
+				
+				if(y== 1 ) // 맨위 부분
 					System.out.printf("%c",'┬');
-				else if(y>= 12) // 맨 아래 부분
+				else if(y== size) // 맨 아래 부분
 					System.out.printf("%c",'┴');
 				else  // 가운데 칸
 					System.out.printf("%c",'┼');
 			}
 			
-			if(y<= 1 )
+			if(y== 1)
 				System.out.printf("%c",'┐'); // 오른쪽 위 모서리
-			else if(y>= 12 )
+			else if(y== size )
 				System.out.printf("%c",'┘'); // 오른쪽 아래 모서리
 			else 
 				System.out.printf("%c",'┤'); // 오른쪽 옆
@@ -99,34 +101,6 @@ public class ForTest1 {
 			System.out.println();
 		}
 		
-		
-		
-}
+	}
 	
-	
-	
-	
-	
-	
-    public int[] solution(int[] lottos, int[] win_nums) {
-
-    	int size = lottos.length ;
-    	int zeroCnt = 0 ;
-    	
-        HashSet<Integer> lotto = new HashSet<>();
-        HashSet<Integer> win_num = new HashSet<>();
-        
-    	for(int i=0;i<size;i++) {
-    		if(lottos[i]==0)
-    			zeroCnt++;
-    		lotto.add(lottos[i]);
-    		win_num.add(win_nums[i]);
-    	}
-    	
-        win_num.retainAll(lotto);
-            
-        int[] answer = {win_num.size(),win_num.size()+zeroCnt};
-        return answer;
-    }
-
 }

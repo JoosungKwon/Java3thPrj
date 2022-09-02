@@ -1,4 +1,4 @@
-package com.newlecture.ch3.fo;
+package newlec.practice.javaProgramming;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -15,27 +15,25 @@ class OmokApp {
 		omokTable = new String[size][size];
 		setting();
 	}
-	
+	// 게임 부팅하고 시작하는 엔드포인트
 	protected void game() {
 		int x,y ;
 		Scanner scan = new Scanner(System.in);
 		
 		/// 게임 시작 화면 
-		System.out.print("┌────────────────────┐\n");
-		System.out.print("│     Game Start     │\n");
-		System.out.print("└────────────────────┘\n");
+//		System.out.print("┌────────────────────┐\n");
+//		System.out.print("│                      Game Sta                          │\n");
+//		System.out.print("└────────────────────┘\n");
 		
 		//부가적인 화면 꾸미기 요소
 //		System.out.print("오목 게임이 시작됩니다.");	
 		
-		display() ;
-		
-		
-		
+		display() ; // 시작화면
 		
 		// 게임이 진행되는 지점 
 		String[] color = {"●","○"}; // 첫번째가 흑, 두번째가 백?
 		int order = 0;
+		
 		main : while(true) {
 			
 			while(true) {
@@ -60,6 +58,9 @@ class OmokApp {
 				continue;
 			};
 			
+			if(order==Math.pow(omokTable.length,2)){
+				
+			}
 //			
 //			if(whoIsWin(y,x)==5) {
 //				System.out.printf("%d 번 사용자가 승리하였습니다.! 축하드립니다.!%n",(order-1)%2);
@@ -74,9 +75,18 @@ class OmokApp {
 
 	}
 	
-	
+	// 오목판을 크기에 맞게 만들어주는 함수 
 	private void setting() {
 				int size = omokTable.length;
+				
+				// 숫자 판 --> 폰트로 인해 구현이 안됨
+//				for(int i = 0; i< size; i++) {
+//					
+//					omokTable[i+1][0] = (i+1>=10) ?  String.valueOf(i+1) :  String.valueOf(i+1+"  ");
+//					omokTable[0][i+1] = String.valueOf(i+1)+" ";
+//				}
+//				omokTable[0][0] = String.valueOf(0)+"  ";
+				
 				// 모서리 작업
 				omokTable[0][0] = "┌";
 				omokTable[size-1][0] = "└";
@@ -98,6 +108,7 @@ class OmokApp {
 						omokTable[y+1][x+1]= "┼" ;
 					}
 				}
+		
 		
 	}
 	
@@ -134,39 +145,3 @@ class OmokApp {
 //	
 //		 return 0;
 }
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		
-		
-		
-
-	
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

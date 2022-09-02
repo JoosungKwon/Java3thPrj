@@ -1,3 +1,4 @@
+package newlec.practice.javaProgramming;
 import java.util.Random;
 
 public class RandomPractice {

@@ -1,45 +1,16 @@
 package newlec.practice.javaProgramming;
 
-public class Seat {
-
-//	public static void main(String[] args) {
-//		 
-//		 System.out.println("┌──────┐  ┌──────────────────────────────────────────────────────────────┐");
-//		 System.out.println("│      │  │               칠                     판                       │");
-//		 System.out.println("│      └──┘--------------------------------------------------------------│");
-//		 System.out.println("│                                                         ┌────────┐     │");
-//		 System.out.println("│                                                         │ 뉴   렉 │     │");
-//		 System.out.println("│                                                         └────────┘     │");
-//		 System.out.println("│                                                                        │");
-//		 System.out.println("│┌────────┐  ┌────────┐ ┌────────┐      ┌────────┐  ┌────────┐ ┌────────┐│");
-//		 System.out.println("││1조 홍길동│  │1조 홍길동│ │1조 홍길동│      │4조 홍길동│  │4조 홍길동│ │4조 홍길동││");
-//		 System.out.println("│└────────┘  └────────┘ └────────┘      └────────┘  └────────┘ └────────┘│");
-//		 System.out.println("│┌────────┐  ┌────────┐ ┌────────┐      ┌────────┐  ┌────────┐ ┌────────┐│");
-//		 System.out.println("││1조 홍길동│  │1조 홍길동│ │2조 홍길동│      │4조 홍길동│  │4조 홍길동│ │ 조 홍길동││");
-//		 System.out.println("│└────────┘  └────────┘ └────────┘      └────────┘  └────────┘ └────────┘│");
-//		 System.out.println("│┌────────┐  ┌────────┐ ┌────────┐      ┌────────┐  ┌────────┐ ┌────────┐│");
-//		 System.out.println("││2조 홍길동│  │2조 홍길동│ │2조 홍길동│      │5조 홍길동│  │5조 홍길동│ │5조 홍길동││");
-//		 System.out.println("│└────────┘  └────────┘ └────────┘      └────────┘  └────────┘ └────────┘│");
-//		 System.out.println("│┌────────┐  ┌────────┐ ┌────────┐      ┌────────┐  ┌────────┐ ┌────────┐│");
-//		 System.out.println("││2조 홍길동│  │3조 홍길동│ │3조 홍길동│      │5조 홍길동│  │5조 홍길동│ │ 조 홍길동││");
-//		 System.out.println("│└────────┘  └────────┘ └────────┘      └────────┘  └────────┘ └────────┘│");
-//		 System.out.println("│┌────────┐  ┌────────┐ ┌────────┐      ┌────────┐  ┌────────┐ ┌────────┐│");
-//		 System.out.println("││3조 홍길동│  │3조 홍길동│ │3조 홍길동│      │3조 홍길동│  │ 조 홍길동│ │ 조 홍길동││");
-//		 System.out.println("│└────────┘  └────────┘ └────────┘      └────────┘  └────────┘ └────────┘│");
-//		 System.out.println("└────────────────────────────────────────────────────────────────────────┘");
-//
-//
-//	}
-	//이 소스는 반드시 Consolas 12 폰트로 실행해 주십시요!!!!!
-
-		public static void main(String[][] T) {
+public class SeatPrint {
+	
+		public static void print(String[][] T) {
 
 			
 			//조 편성
 			System.out.println("*********조 편성 결과*********");
 			System.out.println("(자리 표는 아래 \"4강의실 자리표\" 참고)");
 			System.out.println();
-			for(int i = 0; i<T.length;i++)
+			for(int i = 0; i<T.length-1;i++)
+			System.out.printf("%d조: %s,%s,%s,%s,%s\n",i,T[i][1],T[i][2],T[i][3],T[i][4],T[i][5]);
 			System.out.printf("%d조: %s,%s,%s,%s,%s\n",i,T[i][1],T[i][2],T[i][3],T[i][4],T[i][5]);
 			System.out.println();
 			
