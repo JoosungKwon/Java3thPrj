@@ -11,7 +11,6 @@ public class SeatPrint {
 			System.out.println();
 			for(int i = 0; i<T.length-1;i++)
 			System.out.printf("%d조: %s,%s,%s,%s,%s\n",i,T[i][1],T[i][2],T[i][3],T[i][4],T[i][5]);
-			System.out.printf("%d조: %s,%s,%s,%s,%s\n",i,T[i][1],T[i][2],T[i][3],T[i][4],T[i][5]);
 			System.out.println();
 			
 			//선생님들 이름

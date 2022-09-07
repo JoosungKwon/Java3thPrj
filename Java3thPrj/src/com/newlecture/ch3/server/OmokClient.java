@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class ChatClient {
+public class OmokClient {
 	public static void main(String[] args) {
 		String serverIp = "192.168.0.116";
 		int serverPort = 8080;
@@ -15,6 +15,7 @@ public class ChatClient {
 		try {
 			Socket socket = new Socket(serverIp, serverPort);
 			System.out.println("서버에 연결하였습니다.");
+			
 			ClientSender sender = new ClientSender(socket);
 			ClientReceiver receiver = new ClientReceiver(socket);
 
@@ -30,70 +31,55 @@ public class ChatClient {
 	}
 }
 
-class ClientSender extends Thread {
-	
-	Socket socket;
-
-	ClientSender(Socket socket) {
-		this.socket = socket;
-
-	}
-	
-	@Override
-	public void run() {
-		
-		try {
-			PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
-			BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-			String data;
-			
-			while (true) {
-				
-				data = input.readLine();
-				
-				if(data.equals("exit")) {
-					System.out.println("연결이 끊어졌습니다.");
-					break;
-				} else {
-					output.println(data);
-					output.flush();
-				}
-
-			}
-			output.close();
-			input.close();
-			socket.close();
-			
-		}catch (IOException e) {
-			e.printStackTrace();
-			}
-		}
-	}
-
 class ClientReceiver extends Thread {
 	Socket socket;
+	BufferedReader server_in;
 
-	ClientReceiver(Socket socket) {
+	ClientReceiver(Socket socket) throws IOException {
 		this.socket = socket;
+		server_in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 	}
-	
+
 	@Override
 	public void run() {
-		
 		try {
-			BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			String data;
-			
+			String receive_message;
+
 			while (true) {
-				
-				data = input.readLine();
-				
-				System.out.println("서버:" + data);
-				
+				receive_message = server_in.readLine();
+				System.out.println(receive_message);
 			}
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+}
+
+class ClientSender extends Thread {
+
+	Socket socket;
+	BufferedReader input;
+	PrintWriter server_out;
+
+	ClientSender(Socket socket) throws IOException {
+		this.socket = socket;
+		this.server_out = new PrintWriter(socket.getOutputStream(), true);
+		this.input = new BufferedReader(new InputStreamReader(System.in));
+
+	}
+
+	@Override
+	public void run() {
+		try {
+			String send_message;
+
+			while (true) {
+				send_message = input.readLine();
+				server_out.println(send_message);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 }

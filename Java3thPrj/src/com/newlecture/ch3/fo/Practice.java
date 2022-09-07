@@ -12,17 +12,16 @@ import java.util.Scanner;
 
 public class Practice {
 	public static void main(String[] args) throws IOException {
-		 int menu ;
-		 String name = "" ;
-		 int kor = 0, math = 0, eng = 0 ;
-		 int total = 0; 
-		 double avg = 0;
+		 int[] kors = new int[3] ;
+//		 int[] subjects = new int[3] ;
+
 		 
 		 Scanner sc = new Scanner(System.in);
-		
+		 
+		 
 		 EXIT:
 		 while(true) {
-			 
+			 int menu ;
 			 // 메인 메뉴 화면
 			 System.out.print("┌────────────────────┐\n");
 			 System.out.print("│           	            메인 메뉴		           │\n");
@@ -47,40 +46,28 @@ public class Practice {
 			
 					 // 입력 조건절 
 					 
-					 do {
-						 System.out.print("\t국어: ");
-						 kor = sc.nextInt() ; 
-						 if(kor<0 || kor > 100) {
-							 System.out.println("성적의 입력 범위(0~100을 벗어났습니다.");
-						 }
-					 } while(kor<0 || kor > 100) ;
-					 
-					 do {
-						 System.out.printf("\t수학: ");
-						 math = sc.nextInt() ; 
-						 if(math<0 || math > 100) {
-							 System.out.println("성적의 입력 범위(0~100을 벗어났습니다.");
-						 }
-					 } while(math<0 || math > 100) ;
-					 
-					 do {
-						 System.out.printf("\t영어: ");
-						 eng = sc.nextInt() ;
-						 if(eng<0 || eng > 100) {
-							 System.out.println("성적의 입력 범위(0~100을 벗어났습니다.");
-						 }
-					 } while(eng<0 || eng > 100) ;
-					 
-					 sc.nextLine() ;
-					 System.out.printf("\t이름: ");
-					 name = sc.nextLine() ;
-					 
+					 for(int i =0; i<3; i++) {
+						 
+						 do {
+							 System.out.print("\t국어: ");
+							 kors[i] = sc.nextInt() ; 
+							 if(kors[i]<0 || kors[i] > 100) 
+								 System.out.println("성적의 입력 범위(0~100을 벗어났습니다.");
+							 
+						 } while(kors[i]<0 || kors[i] > 100) ;
+						 
+						 
+					 }
 					 break;
 					
-			 case 2:
-				 				 
+			 case 2:		 
 					 // 연산부
-					 total = kor + math + eng ;
+				 	int total = 0; 
+				 	double avg = 0;
+				 
+				 	 for(int i=0; i<kors.length; i++) 
+				 		total += kors[i] ;
+				 	 
 					 avg = total/3.0f;
 				 
 					 //============================== 출력부===========================
@@ -91,9 +78,9 @@ public class Practice {
 					 
 
 					 System.out.println("--------------<0>------------------------");
-					 System.out.printf("\t국어:%d\n", kor);
-					 System.out.printf("\t수학:%d\n", math);
-					 System.out.printf("\t영어:%d\n", eng);
+					 for(int i=0; i<kors.length; i++) {
+						 System.out.printf("\t국어:%d\n", kors[i]);
+					 }
 					 System.out.printf("\t총점:%d%n", total);
 					 System.out.printf("\t평균:%5.2f%n",avg );
 					 System.out.println("─────────────────────");
@@ -101,28 +88,22 @@ public class Practice {
 					 break;
 			 	case 3:
 			 		{	
-			 			Scanner fscan = new Scanner(new FileInputStream("Java3thPrj\\res\\origin.csv"));			 			 
-			 			name = fscan.nextLine();
-			 			kor = Integer.parseInt(fscan.nextLine());
-			 			math = Integer.parseInt(fscan.nextLine());
-			 			eng = Integer.parseInt(fscan.nextLine());
+			 			Scanner fscan = new Scanner(new FileInputStream("Java3thPrj\\res\\student_score.csv"));			 			 
+			 			for(int i=0; i< kors.length; i++) 
+			 				kors[i] = Integer.parseInt(fscan.nextLine());
 			 			
-			 			 System.out.println(name);
-			 			 
 			 			fscan.close();
 			 		}
 			 		break;
 				case 4:
 					{
 						File data = new File("Java3thPrj\\res\\student_score.csv");
-						FileOutputStream fos = new FileOutputStream(data,true);
+						FileOutputStream fos = new FileOutputStream(data);
 			 			PrintStream ps = new PrintStream(fos ) ;
 			 			
-			 			ps.println(name);
-			 			ps.println(kor);
-			 			ps.println(math);
-			 			ps.println(eng);
-			 			
+			 			for(int i=0; i< kors.length; i++) 
+			 				ps.println(kors[i]);
+
 			 			fos.close() ;
 			 			ps.close();
 					}

@@ -3,7 +3,7 @@ package newlec.practice.javaProgramming;
 import java.util.Scanner;
 
 public class Main {
-	public static void main(String[] args) {
+	public static void main(Sender sender, Receiver receiver) {
 		int size ;
 		Scanner scan = new Scanner(System.in);
 		
@@ -14,7 +14,7 @@ public class Main {
 				System.out.print("오목판의 사이즈를 입력하세요(12 ~ 100): ");
 				size = Integer.parseInt(scan.nextLine());
 				if(size < 12  || 100 < size) {
-					System.out.print("입력 범위를 넘어갔습니다. 다시 입력해주세요");
+					System.out.println("입력 범위를 넘어갔습니다. 다시 입력해주세요");
 					continue;
 				}
 				break;

@@ -1,6 +1,6 @@
 package com.newlecture.ch3.fo;
 
-public class practice2 {
+public class SeatTable {
 
 	public static void main(String[] args) {
 //	 
