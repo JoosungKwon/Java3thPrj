@@ -73,7 +73,7 @@ class OmokServer extends Thread {
 
 					// 탈출 조건
 					if (Line[0].equals("GG")) {
-						turn_out[(turn_idx%2)+1].println("상대방이 GG를 선언했습니다.");
+						turn_out[((turn_idx+1)%2)].println("상대방이 GG를 선언했습니다.");
 						break main;
 					}
 						
@@ -88,14 +88,12 @@ class OmokServer extends Thread {
 
 						int[] prev = (int[]) DB.pollLast();
 						rollback(prev[0], prev[1]);
-						turn_idx--;
 
 						display();
 						
 						turn_out[(turn_idx%2)].println("무르기는 자제해주시길 바랍니다.");
-						turn_out[(turn_idx%2)+1].println("상대방이 무르기를 사용했습니다.");
-						turn_out[(turn_idx%2)+1].printf("무르기가 되어 차례가 되돌아 갑니다. \"%s\" 사용자는 다시 입력해주세요. %n", color[(turn_idx) % 2]);
-						
+						turn_out[((turn_idx+1)%2)].println("상대방이 무르기를 사용했습니다.");
+						turn_idx--; // 차례 back
 						continue;
 
 					} // 무르기 끝
@@ -110,7 +108,15 @@ class OmokServer extends Thread {
 						continue;
 					}
 					
+					
+					// 입력이 완료된 이후 DB에 저장
+					
+					int[] tmp = { y, x };
+					DB.offerLast(tmp);
+					
+					
 					// 3 X 3 방지
+					
 					String threeByThree = "";
 					if (!(threeByThree = whoIsWin(y, x, 3)).equals("Not Yet")) {
 						int[] prev = (int[]) DB.pollLast();
@@ -119,8 +125,10 @@ class OmokServer extends Thread {
 						
 						turn_out[(turn_idx%2)].println("3 X 3 위치입니다. 매너 게임 부탁합니다.");
 						turn_out[(turn_idx%2)].println("다시 입력해주세요.");
-						turn_out[(turn_idx%2)+1].println("상대방이 3 X 3 위치에 두어습니다.");
+						turn_out[((turn_idx+1)%2)].println("상대방이 3 X 3 위치에 두어습니다.");
+						continue;
 					}
+					
 					
 					turn_idx ++; // 턴 변경
 					break input; // 정상 입력이면 input while 탈출 
@@ -132,9 +140,7 @@ class OmokServer extends Thread {
 			} // input while 
 
 			
-			// 입력이 완료된 이후 DB에 저장
-			int[] tmp = { y, x };
-			DB.offerLast(tmp);
+
 
 			
 			// 경기의 승패를 구하라
@@ -148,7 +154,7 @@ class OmokServer extends Thread {
 			// 오목판이 꽉찰 때까지 경기가 끝나지 않았다면 강제 종료
 			if (turn_idx == Math.pow(omokTable.length, 2)) {
 				turn_out[(turn_idx%2)].println("더이상 둘 자리가 없습니다.");
-				turn_out[(turn_idx%2)+1].println("더이상 둘 자리가 없습니다.");
+				turn_out[((turn_idx+1)%2)].println("더이상 둘 자리가 없습니다.");
 				break;
 			}
 
