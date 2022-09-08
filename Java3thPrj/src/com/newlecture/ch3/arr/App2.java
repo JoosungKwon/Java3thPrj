@@ -33,17 +33,17 @@ public class App2 {
 			 }
 			 
 			 
-			 do {
-				 System.out.print("\t국어: ");
-				 kor = sc.nextInt() ; 
-				 if(kor < 0 || kor > 100) 
-					 System.out.println("성적의 입력 범위(0~100을 벗어났습니다.");
-				 
-			 } while(kor < 0 || kor > 100) ;
-			 
-			 kors[idx] = kor ;
-//			 engs[idx] = eng ;
-//			 maths[idx] = math;
+//			 do {
+//				 System.out.print("\t국어: ");
+//				 kor = sc.nextInt() ; 
+//				 if(kor < 0 || kor > 100) 
+//					 System.out.println("성적의 입력 범위(0~100을 벗어났습니다.");
+//				 
+//			 } while(kor < 0 || kor > 100) ;
+//			 
+//			 kors[idx] = kor ;
+////			 engs[idx] = eng ;
+////			 maths[idx] = math;
 			 idx++;
 			 
 			 System.out.println("계속입력하시겠습니까?(1: 예, 0: 아니오");

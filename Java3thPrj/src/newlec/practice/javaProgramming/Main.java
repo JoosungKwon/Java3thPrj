@@ -3,7 +3,7 @@ package newlec.practice.javaProgramming;
 import java.util.Scanner;
 
 public class Main {
-	public static void main(Sender sender, Receiver receiver) {
+	public static void main(String[] args) {
 		int size ;
 		Scanner scan = new Scanner(System.in);
 		
