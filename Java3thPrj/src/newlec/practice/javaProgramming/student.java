@@ -1,5 +1,6 @@
 package newlec.practice.javaProgramming;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -133,9 +134,48 @@ public class student {
 				
 				break;
 		
-			case 3:
-				// ============================== 성적 읽기 ===========================
+			case 3://============================== 성적 읽기 ===========================
+				// 파일 입력 장치
+				FileInputStream fis = new FileInputStream("Java3thPrj\\res\\data.csv"); // 읽고자 하는 파일의 위치 입력
+				Scanner fscan = new Scanner(fis); // 입력을 편하게 사용하기 위한 객체
+				
+				fscan.nextLine(); // 첫 줄 제거 -> 과목명
+				
+				while(fscan.hasNext()) { // 파일에 내용이 있으면 true, 없으면 false -> 즉, 내용이 있을때 까지 읽기 위함
+					
+					if (idx == max) { // 동적으로 배열 길이 증가
+	
+						int[] temp_kor = new int[max + 3];
+						int[] temp_eng = new int[max + 3];
+						int[] temp_math = new int[max + 3];
 
+						for (int i = 0; i < idx; i++) {
+							temp_kor[i] = kors[i];
+							temp_eng[i] = engs[i];
+							temp_math[i] = maths[i];
+						}
+
+						kors = temp_kor;
+						engs = temp_eng;
+						maths = temp_math;
+					} // 현재 배열의 크기보다 읽으려는 파일의 길이가 더 길 경우를 대비하여
+					
+					// csv 파일은 ","를 기준으로 나눠서 입력 받아야 한다.
+					// 한줄로 이루어진 format("국어,영어,수학")을 국어 영어 수학 으로 나눈 후 배열에 담는다.
+					// 배열에 0번 인덱스 -> 국어; 1번 인덱스 영어; 2번 인덱스 수학;
+					// 현재 idx 위치에 대입 후 크기 증가
+					
+					String[] line = fscan.nextLine().split(",");
+					kors[idx] = Integer.parseInt(line[0]);
+					engs[idx] = Integer.parseInt(line[1]);
+					maths[idx] = Integer.parseInt(line[2]);
+					idx++;
+					
+				} // while read
+				
+				System.out.println("성적 읽기가 완료되었습니다."); 
+				break;
+				
 			case 4:
 				// ============================== 성적 저장 ===========================
 
