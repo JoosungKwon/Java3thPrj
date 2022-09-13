@@ -1,7 +1,9 @@
 package newlec.practice.javaProgramming;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 /**
@@ -176,8 +178,25 @@ public class student {
 				System.out.println("성적 읽기가 완료되었습니다."); 
 				break;
 				
-			case 4:
-				// ============================== 성적 저장 ===========================
+			case 4://============================== 성적 저장 ===========================
+				
+				// 파일 출력 장치
+				FileOutputStream fos = new FileOutputStream("Java3thPrj\\res\\data.csv"); // 쓰고자 하는 파일의 위치 입력
+				PrintStream fprint = new PrintStream(fos);// 출력을 편하게 사용하기 위한 객체 매개변수에 true 입력시 이어서 작성가능
+				
+				if(idx==0) System.out.println("저장할 성적이 없습니다. 성적을 먼저 읽기/입력해주세요.");
+				
+				fprint.println("국어,영어,수학"); // 첫줄은 과목명
+				
+				for(int i=0; i<idx; i++) { // format: '국어,영어,수학' (한줄로 출력)
+					fprint.printf("%d,",kors[i]);
+					fprint.printf("%d,",engs[i]);
+					fprint.printf("%d",maths[i]);
+					fprint.println();
+				}
+				
+				System.out.println("성적 저장이 완료되었습니다."); 
+				break;
 
 			case 5:
 				// ============================== 성적 수정 ===========================
