@@ -19,7 +19,7 @@ public class RandomSeat {
 
 		// 학생들 이름이 저장되어 있는 txt파일을 읽어온다
 		// 파일을 읽어오기 위한 객체들
-		File f = new File("C:\\Users\\ict04-13\\git\\Java3thPrj\\Java3thPrj\\res\\randomseat.txt");
+		File f = new File("C:\\Users\\ict04-11\\git\\Java3thPrj\\Java3thPrj\\res\\randomseat.txt");
 		FileReader fr = new FileReader(f);
 		BufferedReader br = new BufferedReader(fr);
 //		FileWriter fw = new FileWriter(f);
@@ -69,6 +69,7 @@ public class RandomSeat {
 		ArrayList<String> temp = memberList ;
 //		Scanner scanner = new Scanner(System.in); 직접 반복 횟수를 지정해주는 걸로 해도 됨
 		// 일단은 20명 만
+		int[] arr =new int[3] ;
 		for(int i = 0; i<5; i++) {
 			for(int j = 1;j<6 ;j++) {
 				if(seatTable[i][j]==null) {

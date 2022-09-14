@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 
 public class OmokClient {
 	public static void main(String[] args) {
-		String serverIp = "192.168.0.116";
+		String serverIp = "192.168.0.113";
 		int serverPort = 8080;
 
 		try {
